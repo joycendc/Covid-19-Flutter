@@ -1,7 +1,7 @@
 import 'package:http/http.dart';
 import 'dart:convert';
 
-class CovidData{
+class CovidData {
   String country;
   String flagURL;
   int cases;
@@ -10,7 +10,7 @@ class CovidData{
   Map histData;
 
   // fetch th data
-  void getData(String query) async{
+  void getData(String query) async {
     var url = 'https://corona.lmao.ninja/v2/countries/$query';
     Response response = await get(url);
     Map data = jsonDecode(response.body);
@@ -22,12 +22,11 @@ class CovidData{
     recovered = data['recovered'];
   }
 
-  void getHistData(String query) async{
+  void getHistData(String query) async {
     var url = 'https://corona.lmao.ninja/v2/historical/$query';
     Response response = await get(url);
     Map data = jsonDecode(response.body);
 
     histData = data['timeline']['cases'];
   }
-
 }
